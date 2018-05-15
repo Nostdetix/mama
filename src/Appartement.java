@@ -1,18 +1,16 @@
-
-
-
-
-public class Appartements extends ParcImmobilier {
+public class Appartement extends ParcImmobilier {
 
 	private int nbpieces;
-	private  boolean louer;
-	private  int plgarages;
-	private  int plparking;
+	private boolean louer;
+	private int plgarages;
+	private int plparking;
 	private int numetage;
-	private  boolean exterieur;
+	private boolean exterieur;
 	private double superficieexterieur;
 
-	public Appartements(double prix, double superficie, String localisation, int nbpieces, boolean louer, int plgarages, boolean exterieur, double superficieexterieur, int plparking, int numetage) {
+	public Appartement(double prix, double superficie, String localisation, boolean louer,
+	                   int nbpieces, int plgarages, boolean exterieur, double superficieexterieur,
+	                   int plparking, int numetage) {
 		super(prix, superficie, localisation);
 		this.nbpieces = nbpieces;
 		this.louer = louer;
@@ -23,7 +21,6 @@ public class Appartements extends ParcImmobilier {
 		this.numetage = numetage;
 	}
 
-	
 	public double getPrix() {
 		return prix;
 	}
@@ -61,11 +58,13 @@ public class Appartements extends ParcImmobilier {
 	}
 
 	public void setLouer(boolean louer) {
-		if (louer == true) {
-			System.out.println("L'appartement est à louer. Le prix est de "+ this.prix + " euros " + "par mois.");
+		if (louer) {
+			System.out.println("L'appartement est ï¿½ louer. Le prix est de " + this.prix + " euros " + "par mois.");
 		} else {
-			System.out.println("L'appartement est à vendre. Le prix est de " + this.prix + " euros.");
+			System.out.println("L'appartement est ï¿½ vendre. Le prix est de " + this.prix + " euros.");
 		}
+
+		this.louer = louer;
 	}
 
 	public int getPlgarages() {
@@ -79,6 +78,7 @@ public class Appartements extends ParcImmobilier {
 			System.out.println("L'appartement n'a pas de garage.");
 		}
 
+		this.plgarages = plgarages;
 	}
 
 	public boolean isExterieur() {
@@ -86,11 +86,13 @@ public class Appartements extends ParcImmobilier {
 	}
 
 	public void setExterieur(boolean exterieur) {
-		if (exterieur == true) {
-			System.out.println("L'exterieur à une superficie de " + superficieexterieur + " m².");
+		if (exterieur) {
+			System.out.println("L'exterieur ï¿½ une superficie de " + superficieexterieur + " mï¿½.");
 		} else {
-			System.out.println("L'appartement n'a pas d'extérieur.");
+			System.out.println("L'appartement n'a pas d'extï¿½rieur.");
 		}
+
+		this.exterieur = exterieur;
 	}
 
 	public double getSuperficieexterieur() {
@@ -106,11 +108,13 @@ public class Appartements extends ParcImmobilier {
 	}
 
 	public void setPlparking(int plparking) {
-		if (plgarages >= 1) {
+		if (plparking >= 1) {
 			System.out.println("L'appartement a " + plparking + " place(s) de parking.");
 		} else {
 			System.out.println("L'appartement n'a pas de place de parking.");
 		}
+
+		this.plparking = plparking;
 	}
 
 	public int getNumetage() {
@@ -118,14 +122,17 @@ public class Appartements extends ParcImmobilier {
 	}
 
 	public void setNumetage(int numetage) {
-		if (exterieur == true && numetage >= 1){
-		System.out.println("L'extérieur de l'appartement est un balcon, une terrasse.");
+		if (this.exterieur && numetage >= 1) {
+			System.out.println("L'extï¿½rieur de l'appartement est un balcon, une terrasse.");
 		}
+
+		this.numetage = numetage;
 	}
 
 	public String toString() {
-		String l = "L'appartement est composé de " + this.nbpieces + " pièces." + " La superficie de l'appartement est de " + this.superficie + " m²." + " L'appartement est au " + this.numetage + "° étage." + " Le bien se situe au " + this.localisation + ".";
-		return l;
+		return "L'appartement est composï¿½ de " + this.nbpieces + " piï¿½ces." + " La superficie de l'appartement est de "
+				+ this.superficie + " mï¿½." + " L'appartement est au " + this.numetage + "ï¿½ ï¿½tage." + " Le bien se situe au "
+				+ this.localisation + ".";
 	}
 
 }
